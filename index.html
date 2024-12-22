@@ -1,0 +1,120 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>website RifalModzYT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            transition: background-color 0.5s;
+        }
+        
+        .dark-mode {
+            background-color: #000000;
+            color: #fff;
+        }
+        
+        .light-mode {
+            background-color: #f0f0f0;
+            color: #000000;
+        }
+        
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        
+        .logo img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            animation: zoomIn 2s;
+        }
+        
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        h1 {
+            font-size: 36px;
+            animation: fadeIn 2s;
+        }
+        
+        p {
+            font-size: 18px;
+            animation: fadeIn 2s;
+        }
+        
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        .tombol {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .tombol:hover {
+            background-color: #62f9ef;
+            color: #000000;
+        }
+        
+        .mode-toggle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <div class="mode-toggle">
+        <button id="mode-toggle" onclick="toggleMode()">🌗</button>
+    </div>
+    <div class="container">
+        <figure class="avatar-box">
+          <img src="my-avatar.jpg" alt="" width="80">
+        </figure>
+        <h1>selamat datang di RifalModzYT!</h1>
+        <p>wait bro <span id="waktu">10</span> detik.</p>
+        <button class="tombol" id="lanjutkan" style="display:none;">go website</button>
+    </div>
+
+    <script>
+        let waktu = 3;
+        const interval = setInterval(() => {
+            document.getElementById('waktu').innerText = waktu;
+            waktu--;
+            if (waktu === 0) {
+                clearInterval(interval);
+                document.getElementById('lanjutkan').style.display = 'block';
+            }
+        }, 300);
+        
+        document.getElementById('lanjutkan').addEventListener('click', () => {
+            window.location.href = 'store.html';
+        });
+        
+        function toggleMode() {
+            document.body.classList.toggle('dark-mode');
+            document.body.classList.toggle('light-mode');
+        }
+    </script>
+</body>
+</html>
